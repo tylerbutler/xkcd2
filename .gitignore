@@ -30,6 +30,3 @@ pip-log.txt
 
 #Translations
 *.mo
-
-### xkcd2 ###
-/_cache/
