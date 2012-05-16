@@ -45,6 +45,11 @@ def random():
     return redirect(url_for('comic', comic_id=comic_id))
 
 
+@app.route('/about/')
+def about():
+    return redirect('http://tylerbutler.com/projects/xkcd2/')
+
+
 def get_comic(id=None):
     if id is not None:
         url = 'http://xkcd.com/%s/' % id
