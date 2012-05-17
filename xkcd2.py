@@ -16,28 +16,33 @@ __author__ = 'tyler@tylerbutler.com'
 app = Flask(__name__)
 app.debug = True
 
-_regex = re.compile(r'^http://(?P<domain>.*)/(?P<comic>.*)/$')
-
-
 class InvalidComicException(Exception):
     pass
 
 
 @app.route('/')
 def home():
+    """Retrieves the current comic on the xkcd.com homepage and displays it on xkcd2.com."""
     return render_template('base.html', **get_comic())
 
 
 @app.route('/<int:comic_id>/')
 def comic(comic_id):
+    """"
+    Retrieves the comic specified by comic_id from xkcd.com and displays it on xkcd2.com.
+
+    If the comic is not found, redirects to the home page.
+    """
     try:
         return render_template('base.html', **get_comic(id=comic_id))
     except InvalidComicException:
         return redirect(url_for('home'))
 
+_regex = re.compile(r'^http://(?P<domain>.*)/(?P<comic>.*)/$')
 
 @app.route('/random/')
 def random():
+    """Loads a random comic from xkcd.com."""
     h = httplib2.Http('_cache')
     resp, content = h.request('http://dynamic.xkcd.com/random/comic/', 'GET')
     url = resp['content-location']
@@ -51,6 +56,7 @@ def about():
 
 
 def get_comic(id=None):
+    """Retrieves a comic with a specific ID from xkcd.com and returns relevant metadata."""
     if id is not None:
         url = 'http://xkcd.com/%s/' % id
         comic_id = id
