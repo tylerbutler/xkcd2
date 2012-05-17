@@ -93,11 +93,29 @@ header {
     }
 }
 
-header#main h1 {
+.emphasize {
+    .border-radius(2px);
+    font-size: 2rem;
+    padding: 0 12px;
+    margin: 7px;
+    color: @white;
+    background-color: @blue;
+
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4ex;
 }
 
-span.emphasize {
-    color: @red;
+.blue.button {
+    background-color: @blue;
+    border: 1px solid @blue-dark;
+
+    &:hover {
+        background-color: @blue-dark;
+    }
+
+    &.nice {
+    }
 }
 
 #comic {
@@ -121,8 +139,13 @@ span.emphasize {
 }
 
 #comic-title {
-    font-style: italic;
+    //font-style: italic;
     text-align: center;
+    padding: .5em;
+
+    background-color: @accent;
+    border: 1px solid @grey-light;
+    .border-radius(5px);
 }
 
 #comic-nav {
@@ -135,7 +158,13 @@ span.emphasize {
     }
 }
 
-#share-bar, footer {
+header#main, footer {
+    background-color: @accent;
+    border-top: 1px solid @grey-light;
+    border-bottom: 1px solid @grey-light;
+}
+
+footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -144,17 +173,8 @@ span.emphasize {
     height: 35px;
     padding: 10px 0;
 
-    background-color: @accent;
-    border-top: 1px solid @grey-light;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
-
     p, div {
         font-size: @font-size-small;
         margin-bottom: 0;
-    }
-
-    p:last-child {
     }
 }

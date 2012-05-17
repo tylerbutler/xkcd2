@@ -52,10 +52,9 @@
 </head>
 <body class="">
 
-<header id="main" class="row">
-    <h1 class=""><a href="/">xkcd <span class="emphasize">2</span></a></h1>
+<header id="main">
+    <h1 class=""><a href="/">xkcd<span class="emphasize">2</span></a></h1>
 </header>
-<hr/>
 <div class="container">
     <div id="comic" class="row">
         <div class="eight columns centered">
@@ -73,10 +72,10 @@
     </div>
     <nav class="row" id="comic-nav">
         <div class="eight columns centered">
-            <a href="{{ url_for('comic', comic_id=(comic_id-1)) }}" class="nice medium radius green button">
+            <a href="{{ url_for('comic', comic_id=(comic_id-1)) }}" class="medium radius blue button">
                 « Previous</a>
             <a href="{{ url_for('random') }}" class="nice medium radius white button">Random</a>
-            <a href="{{ url_for('comic', comic_id=(comic_id+1)) }}" class="nice medium radius green button">Next »</a>
+            <a href="{{ url_for('comic', comic_id=(comic_id+1)) }}" class="medium radius blue button">Next »</a>
         </div>
     </nav>
 </div>
@@ -84,7 +83,7 @@
     <p>xkcd 2 is a project by <a href="http://www.tylerbutler.com/">Tyler Butler</a>.
         <a href="{{ url_for('about') }}">Learn more about it.</a></p>
 
-    <p>xkcd comics are used under a
+    <p>xkcd is written by Randall Munroe. Comics are used under a
         <a href="http://creativecommons.org/licenses/by-nc/2.5/">Creative Commons
             Attribution-NonCommercial 2.5 License.</a>
     </p>
