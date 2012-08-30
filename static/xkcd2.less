@@ -31,10 +31,13 @@ html {
 body {
     line-height: 1.5rem;
     background-color: @white;
-    color: @black;
+}
+
+body, p {
     font-family: @font-main;
-    font-weight: 300;
     font-size: @font-size-default;
+    color: @black;
+    font-weight: 300;
 }
 
 .link-color(@blue, @white);
@@ -93,7 +96,15 @@ header {
     }
 
     &#main {
-        margin-bottom: 2rem;
+        .box-shadow(0 0 10px @grey-light);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+
+        h1 {
+            height: 60px;
+        }
     }
 }
 
@@ -124,6 +135,7 @@ header {
 
     h1 {
         font-size: 4rem;
+        margin-top: 6.5rem;
     }
 
     img {
@@ -141,6 +153,7 @@ header {
 
 #comic-title {
     text-align: center;
+    font-size: 1.3rem;
     padding: .5em;
 
     background-color: @accent;
@@ -165,12 +178,11 @@ header#main, footer {
 }
 
 footer {
+    .box-shadow(0 0 10px @grey-light);
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-top: 4rem;
-    height: 35px;
     padding: 10px 0;
 
     p, div {
