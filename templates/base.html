@@ -16,7 +16,7 @@
     {% block foundationcss %}
         {# FOUNDATION CSS #}
         <link rel="stylesheet"
-              href="{{ url_for('static', filename='foundation/stylesheets/foundation.css') }}">
+              href="{{ url_for('static', filename='foundation/stylesheets/foundation.min.css') }}">
         <link rel="stylesheet"
               href="{{ url_for('static', filename='foundation/stylesheets/app.css') }}">
 
@@ -38,6 +38,7 @@
     {% endblock %}
 
     {% block scripts_top %}
+        <script src="{{ url_for('static', filename='foundation/javascripts/modernizr.foundation.js') }}"></script>
         <script type="text/javascript" src="http://use.typekit.com/zst8lfn.js"></script>
         <script type="text/javascript">try {
             Typekit.load();
@@ -69,7 +70,7 @@
 </header>
 <div class="container">
     <div id="comic" class="row">
-        <div class="eight columns centered">
+        <div class="ten columns centered">
             <h1>{{ comic_title|typogrify }}</h1>
 
             <a href="http://xkcd.com/{{ comic_id }}/">
@@ -79,15 +80,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="eight columns centered">
+        <div class="ten columns centered">
             <p id="comic-title">{{ comic_img_title|typogrify }}</p>
         </div>
     </div>
     <nav class="row" id="comic-nav">
-        <div class="eight columns centered">
+        <div class="ten columns centered">
             <a href="{{ url_for('comic', comic_id=(comic_id-1)) }}" class="medium radius blue button">
                 « Previous</a>
-            <a href="{{ url_for('random') }}" class="nice medium radius white button">Random</a>
+            <a href="{{ url_for('random') }}" class="medium radius secondary button">Random</a>
             <a href="{{ url_for('comic', comic_id=(comic_id+1)) }}" class="medium radius blue button">Next »</a>
         </div>
     </nav>
