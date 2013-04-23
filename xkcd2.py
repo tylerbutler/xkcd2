@@ -16,6 +16,7 @@ __author__ = 'tyler@tylerbutler.com'
 app = Flask(__name__)
 app.debug = True
 
+
 class InvalidComicException(Exception):
     pass
 
@@ -34,11 +35,13 @@ def comic(comic_id):
     If the comic is not found, redirects to the home page.
     """
     try:
-        return render_template('base.html', **get_comic(id=comic_id))
+        return render_template('base.html', **get_comic(comic_id))
     except InvalidComicException:
         return redirect(url_for('home'))
 
+
 _regex = re.compile(r'^http://(?P<domain>.*)/(?P<comic>.*)/$')
+
 
 @app.route('/random/')
 def random():
@@ -55,14 +58,12 @@ def about():
     return redirect('http://tylerbutler.com/projects/xkcd2/')
 
 
-def get_comic(id=None):
+def get_comic(comic_id=None):
     """Retrieves a comic with a specific ID from xkcd.com and returns relevant metadata."""
-    if id is not None:
-        url = 'http://xkcd.com/%s/' % id
-        comic_id = id
+    if comic_id is not None:
+        url = 'http://xkcd.com/%s/' % comic_id
     else:
         url = 'http://xkcd.com/'
-        comic_id = None
 
     # get the comic page using httplib2, which handles most of the caching for us <3
     h = httplib2.Http('_cache')
@@ -75,7 +76,7 @@ def get_comic(id=None):
 
     cache_file = path(__file__).dirname() / ('_cache/%s.xkcd' % comic_id)
 
-    if resp.fromcache and cache_file.exists(): # check if httplib2 loaded the page from its own cache
+    if resp.fromcache and cache_file.exists():  # check if httplib2 loaded the page from its own cache
         with open(cache_file, mode='rb') as f:
             cache = pickle.load(f)
     else:
@@ -94,7 +95,7 @@ def get_comic(id=None):
         if comic_id is None:
             prev_button_a = [a for a in doc.getElementsByTagName('a') if
                              a.getAttribute('rel') == 'prev'][0]
-            prev_id = int(prev_button_a.getAttribute('href')[1:-1]) # trim the slashes
+            prev_id = int(prev_button_a.getAttribute('href')[1:-1])  # trim the slashes
             comic_id = prev_id + 1
 
         cache = {
@@ -102,7 +103,7 @@ def get_comic(id=None):
             'comic_src': comic_src,
             'comic_img_title': comic_img_title,
             'comic_id': comic_id,
-            }
+        }
 
         with open(cache_file, mode='wb') as f:
             pickle.dump(cache, f)
