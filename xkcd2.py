@@ -4,7 +4,7 @@ import html5lib
 import re
 from flask import Flask, render_template, redirect, url_for
 from path import path
-from typogrify.templatetags import jinja2_filters
+from typogrify import filters as jinja2_filters
 
 try:
     import cPickle as pickle

@@ -1,5 +1,5 @@
 path.py
 flask
 httplib2
-html5lib
-typogrify-engineer
+html5lib==0.95
+typogrify-engineer>=2.0.0
