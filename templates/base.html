@@ -71,7 +71,7 @@
 <div class="container">
     <div id="comic" class="row">
         <div class="ten columns centered">
-            <h1>{{ comic_title|typogrify }}</h1>
+            <h1>{{ comic_title|typogrify|safe }}</h1>
 
             <a href="http://xkcd.com/{{ comic_id }}/">
                 <img src="{{ comic_src }}" title="{{ comic_img_title }}"/>

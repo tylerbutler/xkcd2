@@ -1,6 +1,6 @@
 # coding=utf-8
 import httplib2
-import html5lib
+import json
 import re
 from flask import Flask, render_template, redirect, url_for
 from path import path
@@ -61,9 +61,9 @@ def about():
 def get_comic(comic_id=None):
     """Retrieves a comic with a specific ID from xkcd.com and returns relevant metadata."""
     if comic_id is not None:
-        url = 'http://xkcd.com/%s/' % comic_id
+        url = 'http://xkcd.com/%s/info.0.json' % comic_id
     else:
-        url = 'http://xkcd.com/'
+        url = 'http://xkcd.com/info.0.json'
 
     # get the comic page using httplib2, which handles most of the caching for us <3
     h = httplib2.Http('_cache')
@@ -80,23 +80,15 @@ def get_comic(comic_id=None):
         with open(cache_file, mode='rb') as f:
             cache = pickle.load(f)
     else:
-        parser = html5lib.HTMLParser(tree=html5lib.treebuilders.getTreeBuilder('dom'))
-        doc = parser.parse(content.strip())
+        doc = json.loads(content.strip())
 
-        comic_title_div = [div for div in doc.getElementsByTagName('div') if div.getAttribute('id') == 'ctitle'][0]
-        comic_title = comic_title_div.firstChild.nodeValue
-
-        comic_div = [div for div in doc.getElementsByTagName('div') if div.getAttribute('id') == 'comic'][0]
-        comic_img = comic_div.getElementsByTagName('img')[0]
-        comic_src = comic_img.getAttribute('src')
-        comic_img_title = comic_img.getAttribute('title')
+        comic_title = doc['safe_title']
+        comic_src = doc['img']
+        comic_img_title = doc['alt']
 
         # parse out the comic_id if we need to...
         if comic_id is None:
-            prev_button_a = [a for a in doc.getElementsByTagName('a') if
-                             a.getAttribute('rel') == 'prev'][0]
-            prev_id = int(prev_button_a.getAttribute('href')[1:-1])  # trim the slashes
-            comic_id = prev_id + 1
+            comic_id = doc['num']
 
         cache = {
             'comic_title': comic_title,
