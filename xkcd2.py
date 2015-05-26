@@ -82,13 +82,13 @@ def get_comic(comic_id=None):
     else:
         doc = json.loads(content.strip())
 
-        comic_title = doc["safe_title"]
-        comic_src = doc["img"]
-        comic_img_title = doc["alt"]
+        comic_title = doc['safe_title']
+        comic_src = doc['img']
+        comic_img_title = doc['alt']
 
         # parse out the comic_id if we need to...
         if comic_id is None:
-            comic_id = doc["num"]
+            comic_id = doc['num']
 
         cache = {
             'comic_title': comic_title,
