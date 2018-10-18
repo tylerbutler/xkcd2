@@ -1,4 +1,4 @@
-path.py
-flask
-httplib2
+path.py~=11.5
+flask~=1.0.2
+httplib2~=0.11.3
 typogrify-engineer>=2.0.0

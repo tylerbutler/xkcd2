@@ -3,7 +3,7 @@ import httplib2
 import json
 import re
 from flask import Flask, render_template, redirect, url_for
-from path import path
+from path import Path
 from typogrify import filters as jinja2_filters
 
 try:
@@ -74,7 +74,7 @@ def get_comic(comic_id=None):
 
     content = unicode(content, encoding='utf8')
 
-    cache_file = path(__file__).dirname() / ('_cache/%s.xkcd' % comic_id)
+    cache_file = Path(__file__).dirname() / ('_cache/%s.xkcd' % comic_id)
 
     if resp.fromcache and cache_file.exists():  # check if httplib2 loaded the page from its own cache
         with open(cache_file, mode='rb') as f:
