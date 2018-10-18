@@ -2,6 +2,8 @@
 import httplib2
 import json
 import re
+
+import requests
 from flask import Flask, render_template, redirect, url_for
 from path import Path
 from typogrify import filters as jinja2_filters
@@ -66,25 +68,35 @@ def get_comic(comic_id=None):
         url = 'http://xkcd.com/info.0.json'
 
     # get the comic page using httplib2, which handles most of the caching for us <3
-    h = httplib2.Http('_cache')
-    resp, content = h.request(url, 'GET')
+    #h = httplib2.Http('_cache')
+    #resp, content = h.request(url, 'GET')
 
-    if resp['status'] in ('404', '500', '401'):
+    resp = requests.get(url)
+
+    if resp.status_code != 200:
         raise InvalidComicException('Invalid comic id %s' % comic_id)
 
-    content = unicode(content, encoding='utf8')
+    # content = unicode(content, encoding='utf8')
 
     cache_file = Path(__file__).dirname() / ('_cache/%s.xkcd' % comic_id)
 
-    if resp.fromcache and cache_file.exists():  # check if httplib2 loaded the page from its own cache
+    if cache_file.exists() and False:  # check if httplib2 loaded the page from its own cache
         with open(cache_file, mode='rb') as f:
             cache = pickle.load(f)
     else:
-        doc = json.loads(content.strip())
+        print resp.text
+        doc = resp.json()
+        print doc
 
         comic_title = doc['safe_title']
         comic_src = doc['img']
-        comic_img_title = doc['alt']
+        comic_img_title = unicode(doc['alt'])
+        print comic_img_title.encode('utf-8')#.decode('unicode-escape').encode('latin1').decode('utf8')
+        # s1 = json.dumps(u'The warning diamond on the Materials Safety Data Sheet for this stuff just has the "😰" in',
+        #                 encoding='utf8')
+        # s2 = json.loads(s1, encoding='utf8')
+        # print s1.encode('utf-16', 'surrogatepass').decode('utf-16')
+        # print s2
 
         # parse out the comic_id if we need to...
         if comic_id is None:
@@ -105,7 +117,8 @@ def get_comic(comic_id=None):
 
 @app.template_filter()
 def typogrify(s):
-    return jinja2_filters.typogrify(s)
+    s2 = jinja2_filters.typogrify(s)
+    return s2
 
 
 if __name__ == "__main__":

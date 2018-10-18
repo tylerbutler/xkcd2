@@ -77,11 +77,11 @@
                 <img src="{{ comic_src }}" title="{{ comic_img_title }}"/>
             </a>
             <br/>
-        </div>
+        </di|safev>
     </div>
     <div class="row">
         <div class="ten columns centered">
-            <p id="comic-title">{{ comic_img_title|typogrify|safe }}</p>
+            <p id="comic-title">{{ comic_img_title|escape }}</p>
         </div>
     </div>
     <nav class="row" id="comic-nav">
