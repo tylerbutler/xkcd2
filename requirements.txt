@@ -1,4 +1,0 @@
-path.py
-flask
-httplib2
-typogrify-engineer>=2.0.0
