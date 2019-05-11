@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>xkcd 2:
+      {{ comic.safe_title }}</title>
+
+    {% block scripts_top %}
+      <script type="text/javascript" src="http://use.typekit.com/zst8lfn.js"></script>
+      <script type="text/javascript">
+        try {
+          Typekit.load();
+        } catch (e) {}
+      </script>
+
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-31833843-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = (
+            'https:' == document.location.protocol
+            ? 'https://ssl'
+            : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s
+            .parentNode
+            .insertBefore(ga, s);
+        })();
+      </script>
+    {% endblock %}
+  </head>
+  <body class="">
+
+    <header id="main">
+      <h1 class="">
+        <a href="/">xkcd<span class="emphasize">2</span></a>
+      </h1>
+    </header>
+    <div class="container">
+      <div id="comic" class="row">
+        <div class="ten columns centered">
+          <h1>{{ comic.safe_title }}</h1>
+
+          <a href="http://xkcd.com/{{ comic.id }}/">
+            <img src="{{ comic.img }}" title="{{ comic.doc_alt }}"/>
+          </a>
+          <br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="ten columns centered">
+          <p id="comic-title">{{ comic.doc_alt|safe }}</p>
+        </div>
+      </div>
+      <nav class="row" id="comic-nav">
+        <div class="ten columns centered">
+          {% set items = [1, 2, 3] %}
+          <a href="/comic/{{ comic.id - 1 }}/" class="medium radius blue button">
+            « Previous</a>
+          <a href="/random/" class="medium radius secondary button">Random</a>
+          <a href="/comic/{{ comid.id + 1 }}" class="medium radius blue button">Next »</a>
+        </div>
+      </nav>
+    </div>
+    <footer>
+      <p>xkcd 2 is a project by
+        <a href="https://www.tylerbutler.com/">Tyler Butler</a>.
+        <a href="/about/">Learn more about it.</a>
+      </p>
+
+      <p>xkcd is written by Randall Munroe. Comics are used under a
+        <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
+      </p>
+    </footer>
+    {% block scripts_bottom %}{% endblock %}
+  </body>
+</html>
