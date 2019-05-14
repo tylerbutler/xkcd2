@@ -49,22 +49,29 @@ export class Comic {
  *
  * @param id - the id of the comic
  */
-export async function getComic(id?: number): Promise<Comic> {
-  const url = `http://xkcd.com/${id !== undefined ? id : "/"}info.0.json`;
+export async function getComic(id?: number): Promise<Comic | void> {
+  let url: string;
+
+  if (id !== undefined) {
+    url = `https://xkcd.com/${id}/info.0.json`;
+  } else {
+    url = `https://xkcd.com/info.0.json`;
+  }
   console.log(`url: ${url}`);
 
   // tslint:disable-next-line: no-floating-promises
   return axios.get(url)
     .then((response) => {
-      console.log(response);
+      console.log(`${response.status}: ${response.statusText}`);
+      console.log(response.data);
       return deserialize<Comic>(Comic, response.data as string);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      console.log("exiting");
     });
-  // .catch((error) => {
-  //   console.log(error);
-  // })
-  // .finally(() => {
-  //   console.log("exiting");
-  // });
 
   // request(
   //   {

@@ -5,10 +5,8 @@ import { Comic, getComic } from "./comic";
  * GET /
  * Home page.
  */
-export let index = (req: Request, res: Response) => {
-  res.render("home", {
-    title: "Home",
-  });
+export let index = async (req: Request, res: Response) => {
+  res.render("base.njk", { comic: await getComic() });
 };
 
 /**
@@ -18,13 +16,13 @@ export let index = (req: Request, res: Response) => {
 export let comic = async (req: Request, res: Response) => {
   // tslint:disable-next-line: no-unsafe-any
   const comicId: number = req.params.comicId;
-  const theComic: Comic = await getComic(comicId);
+  const theComic = await getComic(comicId);
   res.render("base", { comic: theComic });
 };
 
 export let random = async (req: Request, res: Response) => {
   // Get latest comic to get upper bound
-  const theComic = await getComic();
+  const theComic = await getComic() as Comic;
   const randId = Math.floor(secureMathRandom() * theComic.num);
   res.redirect(`/comic/${randId}/`);
 };
