@@ -1,6 +1,6 @@
 {
   "name": "xkcd2",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "repository": {
     "type": "git",
@@ -61,7 +61,6 @@
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-microsoft-contrib": "^6.1.1",
-    "typescript": "^3.4.5",
-    "watch": "^1.0.2"
+    "typescript": "^3.4.5"
   }
 }
