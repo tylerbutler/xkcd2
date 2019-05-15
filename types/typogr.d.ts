@@ -1,19 +1,19 @@
 export = typogr;
-declare function typogr(obj: any): any;
+declare function typogr(obj: string): string;
 // tslint:disable-next-line: no-namespace
 declare namespace typogr {
-  function amp(text: any): any;
-  function caps(text: any): any;
-  function initQuotes(text: any): any;
-  function ord(text: any): any;
-  function smartBackticks(text: any): any;
-  function smartDashes(text: any): any;
-  function smartEllipses(text: any): any;
-  function smartEscapes(text: any): any;
-  function smartQuotes(text: any): any;
-  function smartypants(text: any): any;
-  function tokenize(text: any): any;
+  function amp(text: string): string;
+  function caps(text: string): string;
+  function initQuotes(text: string): string;
+  function ord(text: string): string;
+  function smartBackticks(text: string): string;
+  function smartDashes(text: string): string;
+  function smartEllipses(text: string): string;
+  function smartEscapes(text: string): string;
+  function smartQuotes(text: string): string;
+  function smartypants(text: string): string;
+  function tokenize(text: string): string;
   function typogrify(src: string): string;
   const version: string;
-  function widont(text: any): any;
+  function widont(text: string): string;
 }
