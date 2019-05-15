@@ -7,9 +7,6 @@ import path from "path";
 import { typogrify } from "typogr";
 import * as controllers from "./controllers";
 
-// Load environment variables from .env file, where API keys and passwords are configured
-// dotenv.config({ path: ".env.example" });
-
 const viewPath = path.join(__dirname, "../templates");
 
 // Create Express server
@@ -47,7 +44,7 @@ app.use(
   express.static(path.join(__dirname, "css")),
 );
 app.use(
-  express.static(path.join(__dirname, "static")),
+  express.static(path.join(__dirname, "root")),
 );
 
 // Set up routes
