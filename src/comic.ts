@@ -1,22 +1,5 @@
-import axios from "axios";
-import { deserialize } from "class-transformer";
+import fetch from "node-fetch";
 import { Url } from "url";
-// import { comic as comicController } from "./controllers";
-
-// tslint:disable-next-line: interface-name
-// export interface Comic {
-//   alt: string;
-//   day: number;
-//   img: string;
-//   link: Url;
-//   month: number;
-//   news: string;
-//   num: number;
-//   safe_title: string;
-//   title: string;
-//   transcript: string;
-//   year: number;
-// }
 
 /**
  * Comic model
@@ -49,7 +32,7 @@ export class Comic {
  *
  * @param id - the id of the comic
  */
-export async function getComic(id?: number): Promise<Comic | void> {
+export async function getComic(id?: number): Promise<Comic> {
   let url: string;
 
   if (id !== undefined) {
@@ -59,46 +42,14 @@ export async function getComic(id?: number): Promise<Comic | void> {
   }
   console.log(`url: ${url}`);
 
-  // tslint:disable-next-line: no-floating-promises
-  return axios.get(url)
-    .then((response) => {
-      console.log(`${response.status}: ${response.statusText}`);
-      console.log(response.data);
-      return deserialize<Comic>(Comic, response.data as string);
+  return fetch(url)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json() as Promise<Comic>;
     })
-    .catch((error) => {
-      console.log(error);
-    })
-    .finally(() => {
-      console.log("exiting");
+    .then((comic) => {
+      return comic;
     });
-
-  // request(
-  //   {
-  //     gzip: true,
-  //     // json: true,
-  //     method: "GET",
-  //     uri: url,
-  //   },
-  //   (error, response, body) => {
-  //     if (response.statusCode === 200) {
-  //       return deserialize<Comic>(Comic, body as string);
-  //       // return JSON.parse(body as string) as Comic;
-  //     } else {
-  //       console.log(`error: ${response.statusCode}`);
-  //       console.log(body);
-  //       // const comic: Comic = { num: 0 };
-  //       return new Comic(0);
-  //     }
-  //   },
-  // );
 }
-
-// export function getUser(id: number): Comic {
-//   // tslint:disable-next-line: no-floating-promises
-//   axios.get('/user?ID=12345')
-//     .then((response) => {
-//       // handle success
-//       console.log(response);
-//     });
-// }

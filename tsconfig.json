@@ -7,6 +7,12 @@
     "node_modules"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "types/*"
+      ]
+    },
     "target": "es6",
     "declaration": true,
     "declarationMap": true,
