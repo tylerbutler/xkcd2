@@ -46,52 +46,61 @@
       </script>
     {% endblock %}
   </head>
-  <body class="">
+  <body class="vholder">
+    <div class="section">
+      <div class="container">
+        <header class="section">
+          <h1 class="title has-text-centered">
+            <a href="/">xkcd<span class="emphasize">2</span></a>
+          </h1>
+        </header>
+        <div id="comic" class="columns is-centered vexpand">
+          <div class="column is-three-fifths">
+            <div class="content has-text-centered">
+              <h1>{{ comic.safe_title|escape|typogrify|safe }}</h1>
 
-    <header id="main">
-      <h1 class="">
-        <a href="/">xkcd<span class="emphasize">2</span></a>
-      </h1>
-    </header>
-    <div class="container">
-      <div id="comic" class="row">
-        <div class="ten columns centered">
-          <h1>{{ comic.safe_title|escape|typogrify|safe }}</h1>
-
-          <a href="http://xkcd.com/{{ comic.num }}/">
-            <img src="{{ comic.img }}" title="{{ comic.alt }}"/>
-          </a>
-          <br/>
+              <a href="http://xkcd.com/{{ comic.num }}/">
+                <img src="{{ comic.img }}" class="image" title="{{ comic.alt }}"/>
+              </a>
+            </div>
+            <div class="message is-centered is-primary">
+              <div class="message-body">
+                <p id="comic-title">{{ comic.alt|escape|typogrify|safe }}</p>
+              </div>
+            </div>
+            {# <div class="is-divider"></div> #}
+            <nav id="comic-nav" class="pagination is-centered" role="navigation" aria-label="pagination">
+              <a class="pagination-previous is-current" href="/comic/{{ comic.num - 1 }}/" title="Previous comic">« Previous</a>
+              <ul class="pagination-list">
+                <li>
+                  <a class="pagination-link" href="/random/" aria-label="Random comic">Random</a>
+                </li>
+              </ul>
+              <a class="pagination-next is-current" href="/comic/{{ comic.num + 1 }}/" {% if isHome %} disabled="disabled" {% endif %}>Next »</a>
+            </nav>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="ten columns centered">
-          <p id="comic-title">{{ comic.alt|escape|typogrify|safe }}</p>
-        </div>
-      </div>
-      <nav class="row" id="comic-nav">
-        <div class="ten columns centered">
-          <a href="/comic/{{ comic.num - 1 }}/" class="medium radius blue button">
-            « Previous</a>
-          <a href="/random/" class="medium radius secondary button">Random</a>
-          {% if isHome %}
-            <a class="medium radius blue button">Next »</a>
-          {% else %}
-            <a href="/comic/{{ comic.num + 1 }}" class="medium radius blue button">Next »</a>
-          {% endif %}
-        </div>
-      </nav>
     </div>
-    <footer>
-      <p>xkcd 2 is a project by
-        <a href="https://www.tylerbutler.com/">Tyler Butler</a>.
-        <a href="/about/">Learn more about it.</a>
-      </p>
+    <footer class="footer">
+      <div class="section columns is-centered">
+        <div class="column is-one-quarter">
+          <div class="message is-link is-unbordered">
+            <div class="message-body">
+              <div class="content is-small has-text-centered">
+                <p>xkcd 2 is a project by
+                  <a href="https://www.tylerbutler.com/">Tyler Butler</a>.
+                  <a href="/about/">Learn more about it.</a>
+                </p>
 
-      <p>xkcd is written by Randall Munroe. Comics are used under a
-        <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
-      </p>
+                <p>xkcd is written by Randall Munroe. Comics are used under a
+                  <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-    {% block scripts_bottom %}{% endblock %}
   </body>
 </html>

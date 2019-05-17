@@ -12,220 +12,249 @@
   }
 }
 
-// Import only what you need from Bulma
+// Bulma variable overrides
+$footer-padding: 1rem .75rem 1rem;
+$footer-background-color: hsl(0, 0%, 100%);
+
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
-// @import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/grid/columns.sass";
+// @import "../../node_modules/bulma/sass/elements/button.sass";
 @import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/content.sass";
 // @import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/notification.sass";
 @import "../../node_modules/bulma/sass/elements/title.sass";
 // @import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/components/message.sass";
+@import "../../node_modules/bulma/sass/components/pagination.sass";
+@import "../../node_modules/bulma/sass/layout/footer.sass";
 // @import "../../node_modules/bulma/sass/layout/hero.sass";
 @import "../../node_modules/bulma/sass/layout/section.sass";
+// @import "bulma-badge.sass";
+@import "../../node_modules/bulma-divider/src/sass/index.sass";
 
-$font-main: museo-sans, sans-serif;
-$font-heading: museo-slab, serif;
-
-$font-size-normal: 1rem;
-$font-size-default: $font-size-normal;
-
-$font-size-tiny: .8rem;
-$font-size-small: .9rem;
-$font-size-medium: 1.1rem;
-$font-size-large: 1.2rem;
-$font-size-xl: 1.3rem;
-$font-size-xxl: 1.4rem;
-
-$blue: #0a6abf;
-$blue-dark: #085599;
-$red: #cc4214;
-$grey: #666;
-$grey-light: #ccc;
-$accent: #f4f4f4;
-$black: #000;
-$white: #fff;
-$yellow: #ffc;
-
-html {
-  font-size: 100%;
-  line-height: 1.5;
+.vholder {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-body {
-  background-color: $white;
-  line-height: 1.5rem;
+.vexpand {
+  flex: 1;
 }
 
-body,
-p {
-  color: $black;
-  font-family: $font-main;
-  font-size: $font-size-default;
-  font-weight: 300;
-}
-
-@include link-color($blue, $white);
-
-a {
-  border-radius: 2px;
-  margin: 0 -3px;
-  padding: 0 3px;
-
-  &:hover {
-    background: $blue;
-    color: $white;
-    text-decoration: none;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "museo-slab", serif;
-  font-weight: normal;
-
-  a {
-    background: transparent;
-    border-radius: 0;
-    color: inherit;
-    margin: 0;
-    padding: 0;
-
-    &:hover {
-      background: transparent;
-      color: inherit;
-      text-decoration: none;
+.message {
+  &.is-unbordered {
+    .message-body {
+      border: 0;
     }
   }
 }
 
-hr {
-  border-bottom: 1px solid $grey;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  clear: both;
-}
+// $font-main: museo-sans, sans-serif;
+// $font-heading: museo-slab, serif;
 
-header,
-footer {
-  margin: auto;
-  text-align: center;
-}
+// $font-size-normal: 1rem;
+// $font-size-default: $font-size-normal;
 
-header {
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0;
-  }
+// $font-size-tiny: .8rem;
+// $font-size-small: .9rem;
+// $font-size-medium: 1.1rem;
+// $font-size-large: 1.2rem;
+// $font-size-xl: 1.3rem;
+// $font-size-xxl: 1.4rem;
 
-  h2 {
-    font-size: 1.5rem;
-  }
+// $blue: #0a6abf;
+// $blue-dark: #085599;
+// $red: #cc4214;
+// $grey: #666;
+// $grey-light: #ccc;
+// $accent: #f4f4f4;
+// $black: #000;
+// $white: #fff;
+// $yellow: #ffc;
 
-  &#main {
-    background-color: $accent;
-    border-bottom: 1px solid $grey-light;
-    border-top: 1px solid $grey-light;
-    box-shadow: 0 0 10px $grey-light;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+// html {
+//   font-size: 100%;
+//   line-height: 1.5;
+// }
 
-    h1 {
-      height: 60px;
-    }
-  }
-}
+// body {
+//   background-color: $white;
+//   line-height: 1.5rem;
+// }
 
-.emphasize {
-  background-color: $blue;
-  border-radius: 2px;
-  color: $white;
-  font-size: 2rem;
-  margin: 7px;
-  padding: 0 12px;
-  position: relative;
-  top: -.4ex;
-  vertical-align: baseline;
-}
+// body,
+// p {
+//   color: $black;
+//   font-family: $font-main;
+//   font-size: $font-size-default;
+//   font-weight: 300;
+// }
 
-.blue {
-  &.button {
-    background-color: $blue;
-    border: 1px solid $blue-dark;
+// @include link-color($blue, $white);
 
-    &:hover {
-      background-color: $blue-dark;
-    }
-  }
-}
+// a {
+//   border-radius: 2px;
+//   margin: 0 -3px;
+//   padding: 0 3px;
 
-#comic {
-  text-align: center;
+//   &:hover {
+//     background: $blue;
+//     color: $white;
+//     text-decoration: none;
+//   }
+// }
 
-  h1 {
-    font-size: 4rem;
-    margin-top: 6.5rem;
-  }
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-family: "museo-slab", serif;
+//   font-weight: normal;
 
-  img {
-    display: block;
-    margin: auto;
-  }
+//   a {
+//     background: transparent;
+//     border-radius: 0;
+//     color: inherit;
+//     margin: 0;
+//     padding: 0;
 
-  a:hover {
-    background: transparent;
-    border: 0;
-    color: transparent;
-    text-decoration: none;
-  }
-}
+//     &:hover {
+//       background: transparent;
+//       color: inherit;
+//       text-decoration: none;
+//     }
+//   }
+// }
 
-#comic-title {
-  background-color: $accent;
-  border: 1px solid $grey-light;
-  border-radius: 5px;
-  font-size: 1.3rem;
-  padding: .5em;
-  text-align: center;
-}
+// hr {
+//   border-bottom: 1px solid $grey;
+//   border-left: 0;
+//   border-right: 0;
+//   border-top: 0;
+//   clear: both;
+// }
 
-#comic-nav {
-  padding-bottom: 5rem;
-  text-align: center;
+// header,
+// footer {
+//   margin: auto;
+//   text-align: center;
+// }
 
-  a {
-    &.button {
-      margin: 0 .5rem;
-      min-width: 66px;
-    }
-  }
-}
+// header {
+//   h1 {
+//     font-size: 3rem;
+//     margin-bottom: 0;
+//   }
 
-footer {
-  background-color: $accent;
-  border-bottom: 1px solid $grey-light;
-  border-top: 1px solid $grey-light;
-  box-shadow: 0 0 10px $grey-light;
-  padding: 10px 0;
-  width: 100%;
+//   h2 {
+//     font-size: 1.5rem;
+//   }
 
-  @media only screen {
-    @media (min-width: 768px) {
-      bottom: 0;
-      left: 0;
-      position: fixed;
-    }
-  }
+//   &#main {
+//     background-color: $accent;
+//     border-bottom: 1px solid $grey-light;
+//     border-top: 1px solid $grey-light;
+//     box-shadow: 0 0 10px $grey-light;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     z-index: 1;
 
-  p,
-  div {
-    font-size: $font-size-small;
-    margin-bottom: 0;
-  }
-}
+//     h1 {
+//       height: 60px;
+//     }
+//   }
+// }
+
+// .emphasize {
+//   background-color: $blue;
+//   border-radius: 2px;
+//   color: $white;
+//   font-size: 2rem;
+//   margin: 7px;
+//   padding: 0 12px;
+//   position: relative;
+//   top: -.4ex;
+//   vertical-align: baseline;
+// }
+
+// .blue {
+//   &.button {
+//     background-color: $blue;
+//     border: 1px solid $blue-dark;
+
+//     &:hover {
+//       background-color: $blue-dark;
+//     }
+//   }
+// }
+
+// #comic {
+//   text-align: center;
+
+//   h1 {
+//     font-size: 4rem;
+//     margin-top: 6.5rem;
+//   }
+
+//   img {
+//     display: block;
+//     margin: auto;
+//   }
+
+//   a:hover {
+//     background: transparent;
+//     border: 0;
+//     color: transparent;
+//     text-decoration: none;
+//   }
+// }
+
+// #comic-title {
+//   background-color: $accent;
+//   border: 1px solid $grey-light;
+//   border-radius: 5px;
+//   font-size: 1.3rem;
+//   padding: .5em;
+//   text-align: center;
+// }
+
+// #comic-nav {
+//   padding-bottom: 5rem;
+//   text-align: center;
+
+//   a {
+//     &.button {
+//       margin: 0 .5rem;
+//       min-width: 66px;
+//     }
+//   }
+// }
+
+// footer {
+//   background-color: $accent;
+//   border-bottom: 1px solid $grey-light;
+//   border-top: 1px solid $grey-light;
+//   box-shadow: 0 0 10px $grey-light;
+//   padding: 10px 0;
+//   width: 100%;
+
+//   @media only screen {
+//     @media (min-width: 768px) {
+//       bottom: 0;
+//       left: 0;
+//       position: fixed;
+//     }
+//   }
+
+//   p,
+//   div {
+//     font-size: $font-size-small;
+//     margin-bottom: 0;
+//   }
+// }
