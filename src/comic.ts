@@ -18,10 +18,6 @@ export class Comic {
   public transcript?: string;
   public year?: number;
 
-  get id(): number {
-    return this.num;
-  }
-
   constructor(num: number) {
     this.num = num;
   }

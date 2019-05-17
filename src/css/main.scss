@@ -1,10 +1,5 @@
 @charset "utf-8";
-//@import "../../node_modules/bulma/bulma.sass";
-
-@mixin border-radius($radius: 5px) {
-  border-radius: $radius;
-  opacity: 1;
-}
+//@import "../../../node_modules/bulma/bulma.sass";
 
 @mixin link-color($normal, $hover) {
   a {
@@ -61,7 +56,7 @@ p {
 @include link-color($blue, $white);
 
 a {
-  @include border-radius(2px);
+  border-radius: 2px;
   padding: 0 3px;
   margin: 0 -3px;
   &:hover {
@@ -81,7 +76,7 @@ h6 {
   font-weight: normal;
 
   a {
-    @include border-radius(0px);
+    border-radius: 0;
     padding: 0;
     margin: 0;
     background: transparent;
@@ -133,7 +128,7 @@ header {
 }
 
 .emphasize {
-  @include border-radius(2px);
+  border-radius: 2px;
   font-size: 2rem;
   padding: 0 12px;
   margin: 7px;
@@ -182,7 +177,7 @@ header {
 
   background-color: $accent;
   border: 1px solid $grey-light;
-  @include border-radius(5px);
+  border-radius: 5px;
 }
 
 #comic-nav {
@@ -221,3 +216,14 @@ footer {
     }
   }
 }
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+// @import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+// @import "../../node_modules/bulma/sass/components/navbar.sass";
+// @import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
