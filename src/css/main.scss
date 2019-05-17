@@ -1,16 +1,27 @@
 @charset "utf-8";
-//@import "../../../node_modules/bulma/bulma.sass";
 
 @mixin link-color($normal, $hover) {
   a {
-    text-decoration: none;
     color: $normal;
+    text-decoration: none;
+
     &:hover {
       color: $hover;
-      transition: all 0.3s ease-out;
+      transition: color .3s ease-out;
     }
   }
 }
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+// @import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+// @import "../../node_modules/bulma/sass/components/navbar.sass";
+// @import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
 
 $font-main: museo-sans, sans-serif;
 $font-heading: museo-slab, serif;
@@ -41,15 +52,15 @@ html {
 }
 
 body {
-  line-height: 1.5rem;
   background-color: $white;
+  line-height: 1.5rem;
 }
 
 body,
 p {
+  color: $black;
   font-family: $font-main;
   font-size: $font-size-default;
-  color: $black;
   font-weight: 300;
 }
 
@@ -57,8 +68,9 @@ p {
 
 a {
   border-radius: 2px;
-  padding: 0 3px;
   margin: 0 -3px;
+  padding: 0 3px;
+
   &:hover {
     background: $blue;
     color: $white;
@@ -76,11 +88,11 @@ h6 {
   font-weight: normal;
 
   a {
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
     background: transparent;
+    border-radius: 0;
     color: inherit;
+    margin: 0;
+    padding: 0;
 
     &:hover {
       background: transparent;
@@ -91,23 +103,23 @@ h6 {
 }
 
 hr {
-  border-top: none;
   border-bottom: 1px solid $grey;
-  border-left: none;
-  border-right: none;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
   clear: both;
 }
 
 header,
 footer {
-  text-align: center;
   margin: auto;
+  text-align: center;
 }
 
 header {
   h1 {
-    margin-bottom: 0;
     font-size: 3rem;
+    margin-bottom: 0;
   }
 
   h2 {
@@ -115,6 +127,9 @@ header {
   }
 
   &#main {
+    background-color: $accent;
+    border-bottom: 1px solid $grey-light;
+    border-top: 1px solid $grey-light;
     box-shadow: 0 0 10px $grey-light;
     position: fixed;
     top: 0;
@@ -128,24 +143,25 @@ header {
 }
 
 .emphasize {
-  border-radius: 2px;
-  font-size: 2rem;
-  padding: 0 12px;
-  margin: 7px;
-  color: $white;
   background-color: $blue;
-
-  vertical-align: baseline;
+  border-radius: 2px;
+  color: $white;
+  font-size: 2rem;
+  margin: 7px;
+  padding: 0 12px;
   position: relative;
-  top: -0.4ex;
+  top: -.4ex;
+  vertical-align: baseline;
 }
 
-.blue.button {
-  background-color: $blue;
-  border: 1px solid $blue-dark;
+.blue {
+  &.button {
+    background-color: $blue;
+    border: 1px solid $blue-dark;
 
-  &:hover {
-    background-color: $blue-dark;
+    &:hover {
+      background-color: $blue-dark;
+    }
   }
 }
 
@@ -163,67 +179,53 @@ header {
   }
 
   a:hover {
-    text-decoration: none;
     background: transparent;
-    border: none;
+    border: 0;
     color: transparent;
+    text-decoration: none;
   }
 }
 
 #comic-title {
-  text-align: center;
-  font-size: 1.3rem;
-  padding: .5em;
-
   background-color: $accent;
   border: 1px solid $grey-light;
   border-radius: 5px;
+  font-size: 1.3rem;
+  padding: .5em;
+  text-align: center;
 }
 
 #comic-nav {
-  text-align: center;
   padding-bottom: 5rem;
+  text-align: center;
 
-  a.button {
-    margin: 0 .5rem;
-    min-width: 66px;
+  a {
+    &.button {
+      margin: 0 .5rem;
+      min-width: 66px;
+    }
   }
 }
 
-header#main,
 footer {
   background-color: $accent;
-  border-top: 1px solid $grey-light;
   border-bottom: 1px solid $grey-light;
-}
-
-footer {
+  border-top: 1px solid $grey-light;
   box-shadow: 0 0 10px $grey-light;
-  width: 100%;
   padding: 10px 0;
+  width: 100%;
+
+  @media only screen {
+    @media (min-width: 768px) {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+    }
+  }
 
   p,
   div {
     font-size: $font-size-small;
     margin-bottom: 0;
   }
-
-  @media only screen {
-    @media (min-width: 768px) {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-    }
-  }
 }
-
-// Import only what you need from Bulma
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-// @import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
-@import "../../node_modules/bulma/sass/elements/container.sass";
-// @import "../../node_modules/bulma/sass/elements/form.sass";
-@import "../../node_modules/bulma/sass/elements/title.sass";
-// @import "../../node_modules/bulma/sass/components/navbar.sass";
-// @import "../../node_modules/bulma/sass/layout/hero.sass";
-@import "../../node_modules/bulma/sass/layout/section.sass";
