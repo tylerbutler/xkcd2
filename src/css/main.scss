@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+// Mixins
 @mixin link-color($normal, $hover) {
   a {
     color: $normal;
@@ -12,45 +13,137 @@
   }
 }
 
-// Bulma variable overrides
-$footer-padding: 1rem .75rem 1rem;
-$footer-background-color: hsl(0, 0%, 100%);
+// Custom variables
+$font-main: museo-sans, sans-serif;
+$font-heading: museo-slab, serif;
+$accent: #f4f4f4;
 
+// Bulma variable overrides
+$section-padding: 1.5rem; //3rem 1.5rem;
+$title-size: 3rem; //2rem;
+// $title-weight: 300;
+// $body-weight: 300;
+
+// Bulma imports
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
 @import "../../node_modules/bulma/sass/base/_all.sass";
 @import "../../node_modules/bulma/sass/grid/columns.sass";
-// @import "../../node_modules/bulma/sass/elements/button.sass";
+
+// $box-background-color: $grey-lighter;
+@import "../../node_modules/bulma/sass/elements/box.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
 @import "../../node_modules/bulma/sass/elements/container.sass";
 @import "../../node_modules/bulma/sass/elements/content.sass";
 // @import "../../node_modules/bulma/sass/elements/form.sass";
 @import "../../node_modules/bulma/sass/elements/notification.sass";
 @import "../../node_modules/bulma/sass/elements/title.sass";
 // @import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/components/level.sass";
 @import "../../node_modules/bulma/sass/components/message.sass";
 @import "../../node_modules/bulma/sass/components/pagination.sass";
+$footer-padding: 1rem .75rem 1rem;
+// $footer-background-color: hsl(0, 0%, 100%);
+$footer-background-color: #f6f9fe;
 @import "../../node_modules/bulma/sass/layout/footer.sass";
 // @import "../../node_modules/bulma/sass/layout/hero.sass";
 @import "../../node_modules/bulma/sass/layout/section.sass";
 // @import "bulma-badge.sass";
 @import "../../node_modules/bulma-divider/src/sass/index.sass";
 
-.vholder {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+// .vholder {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
 
-.vexpand {
-  flex: 1;
-}
+// .vexpand {
+//   flex: 1;
+// }
 
 .message {
   &.is-unbordered {
     .message-body {
-      border: 0;
+      border-width: 0;
+    }
+  }
+
+  &.is-bordered {
+    .message-body {
+      border-width: 0 4px;
     }
   }
 }
+
+.title,
+.subtitle {
+  font-family: $font-heading;
+}
+
+header {
+  &#main {
+    @include link-color($black, $black);
+    border-bottom: 1px solid $grey-light;
+    border-top: 1px solid $grey-light;
+    box-shadow: 0 0 10px $grey-light;
+    color: $black;
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: 300;
+    //background-color: $accent;
+    // position: fixed;
+    // top: 0;
+    // width: 100%;
+    // z-index: 1;
+
+    h1 {
+      height: 70px;
+    }
+  }
+}
+
+.emphasize {
+  background-color: $blue;
+  border-radius: 2px;
+  color: $white;
+  font-size: 2rem;
+  margin: 7px;
+  padding: 0 12px;
+  position: relative;
+  top: -.4ex;
+  vertical-align: baseline;
+}
+
+#comic {
+  // text-align: center;
+
+  h1 {
+    font-size: 4rem;
+    //margin-top: 6.5rem;
+  }
+
+  // img {
+  //   display: block;
+  //   margin: auto;
+  // }
+
+  // a:hover {
+  //   background: transparent;
+  //   border: 0;
+  //   color: transparent;
+  //   text-decoration: none;
+  // }
+}
+
+// .blue {
+//   &.button {
+//     background-color: $blue;
+//     border: 1px solid $blue-dark;
+
+//     &:hover {
+//       background-color: $blue-dark;
+//     }
+//   }
+// }
 
 // $font-main: museo-sans, sans-serif;
 // $font-heading: museo-slab, serif;
