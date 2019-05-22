@@ -46,95 +46,67 @@
       </script>
     {% endblock %}
   </head>
-  <body class="">
+  <body class="expando-container">
     <header id="main">
       <h1 class="has-text-centered">
         <a href="/">xkcd<span class="emphasize">2</span></a>
       </h1>
     </header>
-    <section class="section">
-      {# <div class="container">
-        <header class="box">
-          <h1 class="title has-text-centered">
-            <a href="/">xkcd<span class="emphasize">2</span></a>
-          </h1>
-        </header>
-      </div> #}
-      <div class="container">
-        <div id="comic" class="columns is-centered">
-          <div class="column is-three-fifths">
-            <div class="has-text-centered">
-              <h1 class="title">{{ comic.safe_title|escape|typogrify|safe }}</h1>
+    <div class="expando">
+      <section class="section">
+        <div class="container">
+          <div id="comic" class="columns is-centered">
+            <div class="column is-three-fifths">
+              <div class="has-text-centered">
+                <h1 class="title">{{ comic.safe_title|escape|typogrify|safe }}</h1>
 
-              <a href="http://xkcd.com/{{ comic.num }}/">
-                <img src="{{ comic.img }}" class="image" title="{{ comic.alt }}"/>
-              </a>
-            </div>
-            <div class="message is-centered is-primary is-bordered">
-              <div class="message-body">
-                <p id="comic-title">{{ comic.alt|escape|typogrify|safe }}</p>
+                <a href="{{ comic.img }}">
+                  <img src="{{ comic.img }}" class="image" title="{{ comic.alt }}"/>
+                </a>
               </div>
-            </div>
-            <nav id="comic-nav" class="level is-mobile buttons" role="navigation">
-              <div class="level-left">
-                <div class="level-item">
-                  <a class="button is-link is-outlined" href="/comic/{{ comic.num - 1 }}/" title="previous comic">« Previous</a>
+              <div class="message is-centered is-primary is-bordered">
+                <div class="message-body">
+                  <p id="comic-title">{{ comic.alt|escape|typogrify|safe }}</p>
                 </div>
               </div>
-              <div class="level-item">
-                <a class="button is-success is-outlined" href="/random/" title="random comic">Random</a>
-              </div>
-              <div class="level-right">
-                <div class="level-item">
-                  <a class="button is-link is-outlined{% if ishome %} is-static{% endif %}" href="/comic/{{ comic.num + 1 }}/" title="next comic">Next »</a>
+              <nav id="comic-nav" class="level is-mobile buttons" role="navigation">
+                <div class="level-left">
+                  <div class="level-item">
+                    <a class="button is-outlined" href="/comic/{{ comic.num - 1 }}/" title="previous comic">« Previous</a>
+                  </div>
                 </div>
-              </div>
-            </nav>
-
-            {# <nav id="comic-nav" class="pagination is-centered" role="navigation" aria-label="pagination">
-              <a class="pagination-previous is-current" href="/comic/{{ comic.num - 1 }}/" title="Previous comic">« Previous</a>
-              <ul class="pagination-list">
-                <li>
-                  <a class="pagination-link" href="/random/" aria-label="Random comic">Random</a>
-                </li>
-              </ul>
-              <a class="pagination-next is-current" href="/comic/{{ comic.num + 1 }}/" {% if isHome %} disabled="disabled" {% endif %}>Next »</a>
-            </nav> #}
+                <div class="level-item">
+                  <a class="button is-outlined" href="/random/" title="random comic">Random</a>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <a class="button is-outlined{% if ishome %} is-static{% endif %}"
+                      href="/comic/{{ comic.num + 1 }}/" title="next comic">Next »</a>
+                  </div>
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <footer class="footer columns is-centered">
+      </section>
+    </div>
+    <footer id="footer" class="footer columns is-centered">
       <div class="column is-narrow">
         <div class="message is-link is-unbordered">
           <div class="message-body">
             <div class="content is-small has-text-centered">
               <p>xkcd 2 is a project by
-                  <a href="https://www.tylerbutler.com/">Tyler Butler</a>.<br/>
+                <a href="https://www.tylerbutler.com/">Tyler Butler</a>.<br/>
                 <a href="/about/">Learn more about it.</a>
               </p>
-              <p>xkcd is written by Randall Munroe.<br/>Comics are used under a
-                  <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
+              <p>xkcd is written by Randall Munroe.<br/>
+                Comics are used under a
+                <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
               </p>
             </div>
           </div>
         </div>
       </div>
-      {# <div class="column is-narrow">
-        <div class="message is-link is-unbordered">
-          <div class="message-body">
-            <div class="content is-small has-text-centered">
-              <p>xkcd 2 is a project by
-                  <a href="https://www.tylerbutler.com/">Tyler Butler</a>.<br/>
-                <a href="/about/">Learn more about it.</a>
-              </p>
-              <p>xkcd is written by Randall Munroe.<br/>Comics are used under a
-                  <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> #}
     </footer>
   </body>
 </html>
