@@ -19,9 +19,6 @@ $accent: #f4f4f4;
 
 // Bulma variable overrides
 $body-family: museo-sans, sans-serif;
-$section-padding: 1.5rem; //3rem 1.5rem;
-$title-size: 3rem; //2rem;
-$title-weight: 300;
 // $body-weight: 300;
 
 // Bulma imports
@@ -36,18 +33,25 @@ $title-weight: 300;
 @import "../../node_modules/bulma/sass/elements/content.sass";
 // @import "../../node_modules/bulma/sass/elements/form.sass";
 @import "../../node_modules/bulma/sass/elements/notification.sass";
+
+$title-family: museo-slab, serif;
+$title-size: 3rem; //2rem;
+$title-weight: 300;
 @import "../../node_modules/bulma/sass/elements/title.sass";
+
 // @import "../../node_modules/bulma/sass/components/navbar.sass";
 @import "../../node_modules/bulma/sass/components/level.sass";
 @import "../../node_modules/bulma/sass/components/message.sass";
 @import "../../node_modules/bulma/sass/components/pagination.sass";
 $footer-padding: 0; //.5rem .75rem .5rem;
-// $footer-background-color: hsl(0, 0%, 100%);
-$footer-background-color: #f6f9fe;
+$footer-background-color: #f6f9fe; // hsl(0, 0%, 100%);
 @import "../../node_modules/bulma/sass/layout/footer.sass";
 // @import "../../node_modules/bulma/sass/layout/hero.sass";
+
+$section-padding: 1.5rem; //3rem 1.5rem;
 @import "../../node_modules/bulma/sass/layout/section.sass";
-// @import "bulma-badge.sass";
+
+@import "../../node_modules/bulma-badge/src/sass/index.sass";
 @import "../../node_modules/bulma-divider/src/sass/index.sass";
 
 .expando-container {
@@ -68,6 +72,16 @@ $footer-background-color: #f6f9fe;
   }
 }
 
+#comic {
+  h1 {
+    font-size: 4rem;
+  }
+
+  .message {
+    margin-top: 1rem;
+  }
+}
+
 .message {
   &.is-unbordered {
     .message-body {
@@ -82,281 +96,34 @@ $footer-background-color: #f6f9fe;
   }
 }
 
-.title,
-.subtitle {
+// .title,
+// .subtitle {
+//   font-family: $font-heading;
+// }
+
+#main {
+  @include link-color($black, $black);
+
+  background-color: $white-bis;
+  border-bottom: 1px solid $grey-light;
+  box-shadow: 0 0 10px $grey-light;
+  color: $black;
   font-family: $font-heading;
-}
-
-header {
-  &#main {
-    @include link-color($black, $black);
-
-    background-color: $white-bis;
-    border-bottom: 1px solid $grey-light;
-    // border-top: 1px solid $grey-light;
-    box-shadow: 0 0 10px $grey-light;
-    color: $black;
-    font-family: $font-heading;
-    font-size: 3rem;
-    font-weight: 300;
-    // position: fixed;
-    // top: 0;
-    // width: 100%;
-    // z-index: 1;
-
-    h1 {
-      height: 70px;
-    }
-
-    .emphasize {
-      background-color: $blue;
-      border-radius: 2px;
-      color: $white;
-      font-size: 2rem;
-      margin: 7px;
-      padding: 0 12px;
-      position: relative;
-      top: -.4ex;
-      vertical-align: baseline;
-    }
-  }
-}
-
-#comic {
-  // text-align: center;
+  font-size: 3rem;
 
   h1 {
-    font-size: 4rem;
-    //margin-top: 6.5rem;
+    height: 70px;
   }
 
-  // img {
-  //   display: block;
-  //   margin: auto;
-  // }
-
-  // a:hover {
-  //   background: transparent;
-  //   border: 0;
-  //   color: transparent;
-  //   text-decoration: none;
-  // }
+  .emphasize {
+    background-color: $blue;
+    border-radius: 2px;
+    color: $white;
+    font-size: 2rem;
+    margin: 7px;
+    padding: 0 12px;
+    position: relative;
+    top: -.4ex;
+    vertical-align: baseline;
+  }
 }
-
-// .blue {
-//   &.button {
-//     background-color: $blue;
-//     border: 1px solid $blue-dark;
-
-//     &:hover {
-//       background-color: $blue-dark;
-//     }
-//   }
-// }
-
-// $font-main: museo-sans, sans-serif;
-// $font-heading: museo-slab, serif;
-
-// $font-size-normal: 1rem;
-// $font-size-default: $font-size-normal;
-
-// $font-size-tiny: .8rem;
-// $font-size-small: .9rem;
-// $font-size-medium: 1.1rem;
-// $font-size-large: 1.2rem;
-// $font-size-xl: 1.3rem;
-// $font-size-xxl: 1.4rem;
-
-// $blue: #0a6abf;
-// $blue-dark: #085599;
-// $red: #cc4214;
-// $grey: #666;
-// $grey-light: #ccc;
-// $accent: #f4f4f4;
-// $black: #000;
-// $white: #fff;
-// $yellow: #ffc;
-
-// html {
-//   font-size: 100%;
-//   line-height: 1.5;
-// }
-
-// body {
-//   background-color: $white;
-//   line-height: 1.5rem;
-// }
-
-// body,
-// p {
-//   color: $black;
-//   font-family: $font-main;
-//   font-size: $font-size-default;
-//   font-weight: 300;
-// }
-
-// @include link-color($blue, $white);
-
-// a {
-//   border-radius: 2px;
-//   margin: 0 -3px;
-//   padding: 0 3px;
-
-//   &:hover {
-//     background: $blue;
-//     color: $white;
-//     text-decoration: none;
-//   }
-// }
-
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   font-family: "museo-slab", serif;
-//   font-weight: normal;
-
-//   a {
-//     background: transparent;
-//     border-radius: 0;
-//     color: inherit;
-//     margin: 0;
-//     padding: 0;
-
-//     &:hover {
-//       background: transparent;
-//       color: inherit;
-//       text-decoration: none;
-//     }
-//   }
-// }
-
-// hr {
-//   border-bottom: 1px solid $grey;
-//   border-left: 0;
-//   border-right: 0;
-//   border-top: 0;
-//   clear: both;
-// }
-
-// header,
-// footer {
-//   margin: auto;
-//   text-align: center;
-// }
-
-// header {
-//   h1 {
-//     font-size: 3rem;
-//     margin-bottom: 0;
-//   }
-
-//   h2 {
-//     font-size: 1.5rem;
-//   }
-
-//   &#main {
-//     background-color: $accent;
-//     border-bottom: 1px solid $grey-light;
-//     border-top: 1px solid $grey-light;
-//     box-shadow: 0 0 10px $grey-light;
-//     position: fixed;
-//     top: 0;
-//     width: 100%;
-//     z-index: 1;
-
-//     h1 {
-//       height: 60px;
-//     }
-//   }
-// }
-
-// .emphasize {
-//   background-color: $blue;
-//   border-radius: 2px;
-//   color: $white;
-//   font-size: 2rem;
-//   margin: 7px;
-//   padding: 0 12px;
-//   position: relative;
-//   top: -.4ex;
-//   vertical-align: baseline;
-// }
-
-// .blue {
-//   &.button {
-//     background-color: $blue;
-//     border: 1px solid $blue-dark;
-
-//     &:hover {
-//       background-color: $blue-dark;
-//     }
-//   }
-// }
-
-// #comic {
-//   text-align: center;
-
-//   h1 {
-//     font-size: 4rem;
-//     margin-top: 6.5rem;
-//   }
-
-//   img {
-//     display: block;
-//     margin: auto;
-//   }
-
-//   a:hover {
-//     background: transparent;
-//     border: 0;
-//     color: transparent;
-//     text-decoration: none;
-//   }
-// }
-
-// #comic-title {
-//   background-color: $accent;
-//   border: 1px solid $grey-light;
-//   border-radius: 5px;
-//   font-size: 1.3rem;
-//   padding: .5em;
-//   text-align: center;
-// }
-
-// #comic-nav {
-//   padding-bottom: 5rem;
-//   text-align: center;
-
-//   a {
-//     &.button {
-//       margin: 0 .5rem;
-//       min-width: 66px;
-//     }
-//   }
-// }
-
-// footer {
-//   background-color: $accent;
-//   border-bottom: 1px solid $grey-light;
-//   border-top: 1px solid $grey-light;
-//   box-shadow: 0 0 10px $grey-light;
-//   padding: 10px 0;
-//   width: 100%;
-
-//   @media only screen {
-//     @media (min-width: 768px) {
-//       bottom: 0;
-//       left: 0;
-//       position: fixed;
-//     }
-//   }
-
-//   p,
-//   div {
-//     font-size: $font-size-small;
-//     margin-bottom: 0;
-//   }
-// }

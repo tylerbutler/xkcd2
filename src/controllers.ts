@@ -3,15 +3,15 @@ import { Comic, getComic } from "./comic";
 
 /**
  * GET /
- * Home page.
+ * Home page; loads the most recent comic
  */
 export let index = async (req: Request, res: Response) => {
-  res.render("base.njk", { comic: await getComic(), isHome: true });
+  res.render("base.njk", { comic: await getComic(), ishome: true });
 };
 
 /**
  * GET /comic/
- * Home page.
+ * Loads a comic by its ID.
  */
 export let comic = async (req: Request, res: Response) => {
   // tslint:disable-next-line: no-unsafe-any
@@ -28,9 +28,9 @@ export let comic = async (req: Request, res: Response) => {
 export let random = async (req: Request, res: Response) => {
   // Get latest comic to get upper bound
   const theComic = await getComic();
+  // I don't think a cryptographically sound RNG is needed for this
   // tslint:disable-next-line: insecure-random
   const rv = Math.random();
-  console.log(rv);
   const randId = Math.floor(rv * theComic.num);
   res.redirect(`/comic/${randId}/`);
 };
@@ -38,10 +38,3 @@ export let random = async (req: Request, res: Response) => {
 export let about = (req: Request, res: Response) => {
   res.redirect("https://tylerbutler.com/projects/xkcd2/");
 };
-
-// function secureMathRandom(): number {
-//   const r = getRandomValues(new Uint8Array(1))[0];
-//   const rv = r / 1e+10;
-//   console.log(rv);
-//   return rv;
-// }
