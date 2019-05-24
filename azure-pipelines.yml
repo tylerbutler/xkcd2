@@ -58,20 +58,20 @@ steps:
 #     SlotName: 'staging'
 #     DeployToSlotFlag: true
 
-- task: AzureRmWebAppDeployment@3
-  displayName: 'Deploy Azure App Service'
-  inputs:
-    azureSubscription: 'xkcd2 - 1 - Service Endpoint'
-    WebAppName: xkcd2
-    DeployToSlotFlag: true
-    ResourceGroupName: 'default-web-eastus'
-    SlotName: staging
-    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
-    GenerateWebConfig: true
-    WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
-    TakeAppOfflineFlag: true
-    UseWebDeploy: true
-    RenameFilesFlag: true
+# - task: AzureRmWebAppDeployment@3
+#   displayName: 'Deploy Azure App Service'
+#   inputs:
+#     azureSubscription: 'xkcd2 - 1 - Service Endpoint'
+#     WebAppName: xkcd2
+#     DeployToSlotFlag: true
+#     ResourceGroupName: 'default-web-eastus'
+#     SlotName: staging
+#     Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
+#     GenerateWebConfig: true
+#     WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
+#     TakeAppOfflineFlag: true
+#     UseWebDeploy: true
+#     RenameFilesFlag: true
 
 # - task: AzureRmWebAppDeployment@4
 #   inputs:
