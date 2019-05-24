@@ -43,6 +43,7 @@ steps:
     WebConfigParameters: '-Handler iisnode -NodeStartFile dist/server.js -appType node'
     ResourceGroupName: 'Default-Web-EastUS'
     SlotName: 'staging'
+    DeployToSlotFlag: true
 
 # - task: AzureRmWebAppDeployment@4
 #   inputs:
