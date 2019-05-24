@@ -25,13 +25,24 @@ steps:
 #     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 #     includeRootFolder: false
 
-- task: ArchiveFiles@2
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     # archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+#     archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+- task: AzureRmWebAppDeployment@3
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
+    WebAppName: 'xkcd2'
+    Package: '$(System.DefaultWorkingDirectory)'
+    GenerateWebConfig: true
+    WebConfigParameters: '-Handler iisnode -NodeStartFile dist/server.js -appType node'
+    ResourceGroupName: 'Default-Web-EastUS'
+    SlotName: 'staging'
 
 # - task: AzureRmWebAppDeployment@4
 #   inputs:
