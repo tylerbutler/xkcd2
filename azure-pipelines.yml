@@ -49,4 +49,3 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'Default-Web-EastUS'
     SlotName: 'staging'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
