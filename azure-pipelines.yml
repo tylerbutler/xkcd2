@@ -10,10 +10,16 @@ pool:
   vmImage: 'windows-2019'
 
 steps:
-- script: |
-    npm ci
-    npm run build
-  displayName: 'npm install and build'
+- task: CmdLine@2
+  inputs:
+    script: 'npm ci'
+  displayName: 'npm install'
+
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm run build'
+  displayName: 'npm run build'
 
 - task: CmdLine@2
   inputs:
