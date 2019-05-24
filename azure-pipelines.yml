@@ -20,11 +20,18 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
-
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
+    appType: 'webApp'
+    WebAppName: 'xkcd2'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'Default-Web-EastUS'
+    SlotName: 'staging'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
