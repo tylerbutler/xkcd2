@@ -21,6 +21,10 @@ export class Comic {
   constructor(num: number) {
     this.num = num;
   }
+
+  public date(): string {
+    return `${this.year}-${this.month}-${this.day}`;
+  }
 }
 
 /**
