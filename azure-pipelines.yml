@@ -15,72 +15,12 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@1
-  displayName: 'Archive files '
-  inputs:
-    rootFolder: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
-
 - task: CopyFiles@2
-  displayName: 'Copy File to: $(TargetFolder)'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: '$(Build.BuildId).zip'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
+    Contents: |
+      dist/**/*.*
+      package.json
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
-
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-#     includeRootFolder: false
-
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-#     includeRootFolder: true
-#     archiveType: 'zip'
-#     # archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-#     archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
-#     replaceExistingArchive: true
-
-# - task: AzureRmWebAppDeployment@3
-#   inputs:
-#     azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
-#     WebAppName: 'xkcd2'
-#     Package: '$(System.DefaultWorkingDirectory)'
-#     GenerateWebConfig: true
-#     WebConfigParameters: '-Handler iisnode -NodeStartFile dist/server.js -appType node'
-#     ResourceGroupName: 'Default-Web-EastUS'
-#     SlotName: 'staging'
-#     DeployToSlotFlag: true
-
-# - task: AzureRmWebAppDeployment@3
-#   displayName: 'Deploy Azure App Service'
-#   inputs:
-#     azureSubscription: 'xkcd2 - 1 - Service Endpoint'
-#     WebAppName: xkcd2
-#     DeployToSlotFlag: true
-#     ResourceGroupName: 'default-web-eastus'
-#     SlotName: staging
-#     Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
-#     GenerateWebConfig: true
-#     WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
-#     TakeAppOfflineFlag: true
-#     UseWebDeploy: true
-#     RenameFilesFlag: true
-
-# - task: AzureRmWebAppDeployment@4
-#   inputs:
-#     ConnectionType: 'AzureRM'
-#     azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
-#     appType: 'webApp'
-#     WebAppName: 'xkcd2'
-#     deployToSlotOrASE: true
-#     ResourceGroupName: 'Default-Web-EastUS'
-#     SlotName: 'staging'
-#     # packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-#     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
