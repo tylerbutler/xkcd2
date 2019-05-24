@@ -17,10 +17,13 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: |
+    # SourceFolder: '$(System.DefaultWorkingDirectory)'
+    contents: |
       dist\**
       package.json
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: xkcd2Drop
