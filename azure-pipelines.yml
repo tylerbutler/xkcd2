@@ -24,7 +24,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy File to: $(TargetFolder)'
   inputs:
-    SourceFolder: '$(Build.ArtifactStagingDirectory)'
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: '$(Build.BuildId).zip'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\ArtifactsToBePublished'
 
