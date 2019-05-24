@@ -54,3 +54,4 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'Default-Web-EastUS'
     SlotName: 'staging'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
