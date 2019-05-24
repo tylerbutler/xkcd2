@@ -33,14 +33,14 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
-    appType: 'webApp'
-    WebAppName: 'xkcd2'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'Default-Web-EastUS'
-    SlotName: 'staging'
-    # packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Windows Azure MSDN - Visual Studio Ultimate(b0515714-0ea1-43d4-ae9b-4d87afe8e8a3)'
+#     appType: 'webApp'
+#     WebAppName: 'xkcd2'
+#     deployToSlotOrASE: true
+#     ResourceGroupName: 'Default-Web-EastUS'
+#     SlotName: 'staging'
+#     # packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+#     packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
