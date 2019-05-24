@@ -2,6 +2,9 @@
   "name": "xkcd2",
   "version": "2.0.0",
   "description": "A starting point for Node.js express apps with TypeScript",
+  "engines": {
+    "node": ">=10.15.2"
+}  ,
   "repository": {
     "type": "git",
     "url": "https://github.com/tylerbutler/xkcd2"
@@ -17,8 +20,8 @@
     "build": "concurrently \"npm run build:css\" \"npm run build:ts && npm run tslint\"",
     "debug": "npm run build && npm run watch:debug",
     "serve:debug": "nodemon --inspect dist/server.js",
-    "serve": "node dist/server.js",
-    "start": "npm run serve",
+    "serve": "npm run start",
+    "start": "node dist/server.js",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "watch:debug": "concurrently -k -p \"[{name}]\" -n \"Sass,Css,TypeScript,Node\" -c \"yellow.bold,red,cyan.bold,green.bold\" \"npm run watch:sass\" \"npm run watch:css\" \"npm run watch:ts\" \"npm run serve:debug\"",
     "watch:node": "nodemon dist/server.js",
