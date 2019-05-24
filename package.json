@@ -4,7 +4,7 @@
   "description": "A starting point for Node.js express apps with TypeScript",
   "engines": {
     "node": ">=10.15.2"
-}  ,
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tylerbutler/xkcd2"
