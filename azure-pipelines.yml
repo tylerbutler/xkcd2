@@ -39,3 +39,14 @@ steps:
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
     artifactName: xkcd2Drop
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'xkcd2 - 1 - Service Endpoint'
+    appType: 'webApp'
+    WebAppName: 'xkcd2'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'Default-Web-EastUS'
+    SlotName: 'staging'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
