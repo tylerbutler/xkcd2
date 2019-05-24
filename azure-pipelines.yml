@@ -27,7 +27,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
@@ -43,4 +43,4 @@ steps:
     ResourceGroupName: 'Default-Web-EastUS'
     SlotName: 'staging'
     # packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    packageForLinux: '$$(Build.ArtifactStagingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
