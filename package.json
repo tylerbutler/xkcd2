@@ -35,10 +35,10 @@
     "compression": "^1.7.4",
     "dotenv": "^8.0.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "lusca": "^1.6.1",
     "node-fetch": "^2.6.0",
-    "nodemon": "^1.19.0",
+    "nodemon": "^1.19.1",
     "nunjucks": "^3.2.0",
     "postcss": "^7.0.16",
     "typogr": "^0.6.8"
@@ -49,7 +49,7 @@
     "@types/errorhandler": "0.0.32",
     "@types/express": "^4.16.1",
     "@types/lusca": "^1.5.0",
-    "@types/node": "^12.0.2",
+    "@types/node": "^12.0.3",
     "@types/node-fetch": "^2.3.4",
     "@types/nunjucks": "^3.1.1",
     "@types/request": "^2.48.1",
@@ -70,9 +70,9 @@
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.0.0",
     "stylelint-scss": "^3.6.1",
-    "ts-node": "^8.1.0",
+    "ts-node": "^8.2.0",
     "tslint": "^5.16.0",
-    "tslint-microsoft-contrib": "^6.1.1",
+    "tslint-microsoft-contrib": "^6.2.0",
     "typescript": "^3.4.5"
   }
 }
