@@ -28,6 +28,7 @@
       true,
       "dev"
     ],
+    "no-submodule-imports": [true, "serverless-express/express", "serverless-express/handler"],
     /**
          * Security Rules. The following rules should be turned on because they find security issues
          * or are recommended in the Microsoft Secure Development Lifecycle (SDL)
@@ -59,6 +60,7 @@
     "react-no-dangerous-html": true,
     // Deprecated Rules. These rules are deprecated. Disabling them so that they don't get applied.
     "no-function-constructor-with-string-args": false,
-    "no-unnecessary-bind": false
+    "no-unnecessary-bind": false,
+    "no-unsafe-any": false
   }
 }

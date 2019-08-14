@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { Comic, getComic } from "./comic";
+// tslint:disable-next-line: no-var-requires no-require-imports
+// const handler = require("serverless-express/handler");
 
 /**
  * GET /

@@ -1,9 +1,13 @@
+// tslint:disable-next-line: no-var-requires no-require-imports
+// const express = require("serverless-express/express");
+import azureAwsServerlessExpress from "azure-aws-serverless-express";
 import compression from "compression";
 import errorhandler from "errorhandler";
 import express from "express";
 import lusca from "lusca";
 import nunjucks from "nunjucks";
 import path from "path";
+// import serverless from "serverless-http";
 import { typogrify } from "typogr";
 import * as controllers from "./controllers";
 
@@ -17,6 +21,7 @@ export const app = express();
 app.set("port", process.env.PORT || 3000);
 app.set("views", viewPath);
 app.set("view engine", "nunjucks");
+app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(lusca.xframe("DENY"));
 app.use(lusca.xssProtection(true));
@@ -52,3 +57,5 @@ app.get("/", controllers.index);
 app.get("/comic/:comicId", controllers.comic);
 app.get("/random/", controllers.random);
 app.get("/about/", controllers.about);
+
+export const handler = azureAwsServerlessExpress(app);
