@@ -1,9 +1,10 @@
 {
-    "recommendations": [
-        "editorconfig.editorconfig",
-        "eg2.vscode-npm-script",
-        "glen-84.sass-lint",
-        "ms-vscode.vscode-typescript-tslint-plugin",
-        "robinbentley.sass-indented",
-    ]
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "eg2.vscode-npm-script",
+    "glen-84.sass-lint",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "robinbentley.sass-indented",
+    "ms-azuretools.vscode-azurefunctions",
+  ]
 }

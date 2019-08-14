@@ -37,5 +37,10 @@ Thumbs.db
 # Ignore built ts files
 dist/**/*
 
-
 *.tsbuildinfo
+
+# Azure Functions artifacts
+bin
+obj
+appsettings.json
+local.settings.json
