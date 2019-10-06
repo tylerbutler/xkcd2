@@ -1,0 +1,33 @@
+{
+  "name": "xkcd2-sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:sass": "node-sass src/css/main.scss dist/css/main.css",
+    "build:css": "npm run build:sass && concurrently \"npm run build:css:max\" \"npm run build:css:min\"",
+    "build:css:max": "postcss dist/css/main.css --output dist/css/main.max.css --map --use autoprefixer",
+    "build:css:min": "postcss dist/css/main.css --output dist/css/main.min.css --map --use autoprefixer cssnano"
+  },
+  "author": "Tyler Butler <tyler@tylerbutler.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "bulma": "^0.7.5",
+    "bulma-badge": "^3.0.1",
+    "bulma-divider": "^0.2.0",
+    "concurrently": "^4.1.0",
+    "cssnano": "^4.1.10",
+    "node-sass": "^4.12.0",
+    "postcss-cli": "^6.1.2",
+    "postcss-load-config": "^2.0.0",
+    "postcss-sorting": "^5.0.0",
+    "sass-lint": "^1.13.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.0.0",
+    "stylelint-scss": "^3.6.1"
+  }
+}

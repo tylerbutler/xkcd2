@@ -1,0 +1,24 @@
+{
+  "options": {
+    "max-warnings": 50
+  },
+  "rules": {
+    "clean-import-paths": 0,
+    "force-pseudo-nesting": 0,
+    "indentation": [
+      0,
+      {
+        "size": 2
+      }
+    ],
+    "no-ids": 0,
+    "no-url-domains": 0,
+    "no-url-protocols": 0,
+    "quotes": [
+      2,
+      {
+        "style": "double"
+      }
+    ]
+  }
+}

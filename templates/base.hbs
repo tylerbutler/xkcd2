@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width"/>
+
+    <title>xkcd 2:
+      {{ comic.safe_title }}</title>
+
+    <link rel="stylesheet" href="https://use.typekit.net/zst8lfn.css">
+    <link rel="stylesheet" href="/css/main.min.css">
+  </head>
+  <body class="expando-container">
+    <header id="main">
+      <h1 class="has-text-centered">
+        <a href="/">xkcd<span class="emphasize">2</span></a>
+      </h1>
+    </header>
+    <div class="expando">
+      <section class="section">
+        <div class="container">
+          <div id="comic" class="columns is-centered">
+            <div class="column is-three-fifths">
+              <div class="has-text-centered">
+                <h1 class="title">{{ comic.safe_title|escape|typogrify|safe }}</h1>
+
+                <a href="{{ comic.img }}">
+                  <img src="{{ comic.img }}" class="image" title="{{ comic.alt }}"/>
+                </a>
+              </div>
+              <div class="message is-centered is-primary is-bordered">
+                <div class="message-body">
+                  <p id="comic-title">{{ comic.alt|escape|typogrify|safe }}</p>
+                </div>
+              </div>
+              <nav id="comic-nav" class="level is-mobile buttons" role="navigation">
+                <div class="level-left">
+                  <div class="level-item">
+                    <a class="button is-outlined" href="/comic/{{ comic.num - 1 }}/" title="previous comic">« Previous</a>
+                  </div>
+                </div>
+                <div class="level-item">
+                  <a class="button is-outlined" href="/random/" title="random comic">Random</a>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <a class="button is-outlined{% if ishome %} is-static{% endif %}"
+                      href="/comic/{{ comic.num + 1 }}/" title="next comic">Next »</a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer id="footer" class="footer columns is-centered">
+      <div class="column is-narrow">
+        <div class="message is-link is-unbordered">
+          <div class="message-body">
+            <div class="content is-small has-text-centered">
+              <p>xkcd 2 is a project by
+                <a href="https://www.tylerbutler.com/">Tyler Butler</a>.<br/>
+                <a href="/about/">Learn more about it.</a>
+              </p>
+              <p>xkcd is written by Randall Munroe.<br/>
+                Comics are used under a
+                <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC BY-NC 2.5 License.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
