@@ -14,7 +14,7 @@ namespace tylerbutler.xkcd2
     {
         [FunctionName("Comic")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "/{comicId}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "/{comicId=null}")] HttpRequest req,
             string comicId,
             ILogger log)
         {
