@@ -28,7 +28,7 @@ export class Comic {
  *
  * @param id - the id of the comic
  */
-export async function getComic(id?: number): Promise<Comic> {
+export async function getComic(id?: number | string): Promise<Comic> {
   let url: string;
 
   if (id !== undefined) {

@@ -14,8 +14,7 @@ export let index = async (req: Request, res: Response) => {
  * Loads a comic by its ID.
  */
 export let comic = async (req: Request, res: Response) => {
-  // tslint:disable-next-line: no-unsafe-any
-  const comicId: number = req.params.comicId;
+  const comicId: string = req.params.comicId;
   let theComic: Comic;
   try {
     theComic = await getComic(comicId);
