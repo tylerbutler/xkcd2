@@ -24,7 +24,10 @@ class InvalidComicException(Exception):
 @app.route('/')
 def home():
     """Retrieves the current comic on the xkcd.com homepage and displays it on xkcd2.com."""
-    return render_template('base.html', **get_comic())
+    try:
+        return render_template('base.html', **get_comic())
+    except InvalidComicException:
+        return 'The latest comic is temporarily unavailable. Please try again later.', 503
 
 
 @app.route('/<int:comic_id>/')
@@ -61,22 +64,26 @@ def about():
 def get_comic(comic_id=None):
     """Retrieves a comic with a specific ID from xkcd.com and returns relevant metadata."""
     if comic_id is not None:
-        url = 'http://xkcd.com/%s/info.0.json' % comic_id
+        url = 'https://xkcd.com/%s/info.0.json' % comic_id
     else:
-        url = 'http://xkcd.com/info.0.json'
-
-    # get the comic page using httplib2, which handles most of the caching for us <3
-    h = httplib2.Http('_cache')
-    resp, content = h.request(url, 'GET')
-
-    if resp['status'] in ('404', '500', '401'):
-        raise InvalidComicException('Invalid comic id %s' % comic_id)
-
-    content = unicode(content, encoding='utf8')
+        url = 'https://xkcd.com/info.0.json'
 
     cache_file = path(__file__).dirname() / ('_cache/%s.xkcd' % comic_id)
 
-    if resp.fromcache and cache_file.exists():  # check if httplib2 loaded the page from its own cache
+    # get the comic page using httplib2, which handles most of the caching for us <3
+    h = httplib2.Http('_cache')
+    headers = {'cache-control': 'no-cache'} if comic_id is None else {}
+    resp, content = h.request(url, 'GET', headers=headers)
+
+    if resp['status'] != '200':
+        if comic_id is None and cache_file.exists():
+            with open(cache_file, mode='rb') as f:
+                return pickle.load(f)
+        raise InvalidComicException('Invalid comic id %s' % comic_id)
+
+    content = content.decode('utf8')
+
+    if comic_id is not None and resp.fromcache and cache_file.exists():
         with open(cache_file, mode='rb') as f:
             cache = pickle.load(f)
     else:

@@ -89,7 +89,7 @@
             <a href="{{ url_for('comic', comic_id=(comic_id-1)) }}" class="medium radius blue button">
                 « Previous</a>
             <a href="{{ url_for('random') }}" class="medium radius secondary button">Random</a>
-            <a href="{{ url_for('comic', comic_id=(comic_id+1)) }}" class="medium radius blue button">Next »</a>
+            <a href="{{ url_for('home') if request.endpoint == 'home' else url_for('comic', comic_id=(comic_id+1)) }}" class="medium radius blue button">Next »</a>
         </div>
     </nav>
 </div>
